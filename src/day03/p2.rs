@@ -31,13 +31,7 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
         if len == 0 {
             len = raw_num.len();
         }
-        let mut num = raw_num.parse::<i64>()?;
-        let mut true_val = 0;
-        for i in 0..len {
-            let x = num % 10;
-            true_val |= x << i;
-            num /= 10;
-        }
+        let true_val = i64::from_str_radix(raw_num, 2)?;
         val_list.push(true_val);
     }
     val_list.sort();
