@@ -1,3 +1,4 @@
+use std::thread;
 pub fn proc(mut val_list: Vec<i64>, len: usize, ascd: bool) -> i64 {
     let mut base = 0;
     for i in 0..len {
@@ -32,7 +33,12 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
         .collect::<Vec<i64>>();
     val_list.sort();
 
-    let gamma = proc(val_list.clone(), len, true);
-    let epsilon = proc(val_list, len, false);
+    // let gamma = proc(val_list.clone(), len, true);
+    // let epsilon = proc(val_list, len, false);
+    let g = val_list.clone();
+    let handle_gamma = thread::spawn(move || proc(g, len, true));
+    let handle_epsilon = thread::spawn(move || proc(val_list, len, false));
+    let gamma = handle_gamma.join().unwrap();
+    let epsilon = handle_epsilon.join().unwrap();
     Ok(gamma * epsilon)
 }
