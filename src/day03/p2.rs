@@ -25,15 +25,11 @@ pub fn proc(mut val_list: Vec<i64>, len: usize, ascd: bool) -> i64 {
 }
 
 pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
-    let mut val_list = vec![];
-    let mut len = 0;
-    for raw_num in inp {
-        if len == 0 {
-            len = raw_num.len();
-        }
-        let true_val = i64::from_str_radix(raw_num, 2)?;
-        val_list.push(true_val);
-    }
+    let len = inp[0].len();
+    let mut val_list = inp
+        .into_iter()
+        .map(|x| i64::from_str_radix(x, 2).unwrap())
+        .collect::<Vec<i64>>();
     val_list.sort();
 
     let gamma = proc(val_list.clone(), len, true);
