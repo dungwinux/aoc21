@@ -1,20 +1,15 @@
 pub fn solve(inp: Vec<&str>) -> Result<i32, Box<dyn std::error::Error>> {
-    let mut prev = -1;
+    let int_vec = inp
+        .into_iter()
+        .map(|s| s.parse::<i32>().unwrap())
+        .collect::<Vec<i32>>();
     let mut counter = 0;
-    let mut v = std::collections::VecDeque::new();
-    let mut sum: i32 = 0;
-    for raw_num in inp {
-        let num = raw_num.parse::<i32>()?;
-        v.push_back(num);
-        sum += num;
-        if v.len() == 3 {
-            println!("{}", sum);
-            if prev != -1 && prev < sum {
-                counter += 1;
-            }
-            prev = sum;
-            sum -= v.pop_front().expect("You hacked the queue");
+    let mut idx = 0;
+    for num in int_vec.iter() {
+        if idx >= 3 && int_vec[idx - 3] < *num {
+            counter += 1;
         }
+        idx += 1;
     }
     Ok(counter)
 }
