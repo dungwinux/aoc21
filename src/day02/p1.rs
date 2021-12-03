@@ -3,7 +3,7 @@ struct Loc {
     line: i32,
 }
 
-pub fn solve(inp: Vec<&str>) -> Result<i32, Box<dyn std::error::Error>> {
+pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
     let mut my_loc = Loc { depth: 0, line: 0 };
     for raw_cmd in inp {
         let (x, y) = raw_cmd.split_once(' ').expect("Wrong command");

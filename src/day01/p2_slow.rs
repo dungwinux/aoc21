@@ -1,4 +1,4 @@
-pub fn solve(inp: Vec<&str>) -> Result<i32, Box<dyn std::error::Error>> {
+pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
     let mut prev = -1;
     let mut counter = 0;
     let mut v = std::collections::VecDeque::new();

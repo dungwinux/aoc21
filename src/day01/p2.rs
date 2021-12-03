@@ -1,4 +1,4 @@
-pub fn solve(inp: Vec<&str>) -> Result<i32, Box<dyn std::error::Error>> {
+pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
     let int_vec = inp
         .into_iter()
         .map(|s| s.parse::<i32>().unwrap())

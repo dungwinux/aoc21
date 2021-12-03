@@ -2,7 +2,7 @@ use std::fs;
 mod day02;
 use day02::{p1, p2};
 
-fn run(contents: Vec<&str>, solver: &dyn Fn(Vec<&str>) -> Result<i32, Box<dyn std::error::Error>>) {
+fn run(contents: Vec<&str>, solver: &dyn Fn(Vec<&str>) -> Result<i64, Box<dyn std::error::Error>>) {
     match solver(contents) {
         Ok(answer) => println!("Answer: {}", answer),
         Err(problem) => println!("We got a problem: {}", problem),
