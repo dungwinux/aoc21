@@ -12,7 +12,7 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
         .enumerate()
         .filter(|x| x.1 != 0)
         .collect();
-    println!("{:?}", position);
+    // println!("{:?}", position);
     let mut collector = vec![0; 2000];
     for i in 0..collector.len() {
         for item in &position {
@@ -20,11 +20,6 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
         }
     }
     println!("{:?}", collector);
-    let global_min = collector
-        .into_iter()
-        .enumerate()
-        .min_by(|x, y| x.1.cmp(&y.1))
-        .unwrap();
-    println!("{:?}", global_min.1);
-    Ok(global_min.1 as i64)
+    let global_min = collector.into_iter().min().unwrap();
+    Ok(global_min)
 }
