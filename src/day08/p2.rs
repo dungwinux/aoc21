@@ -73,13 +73,14 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
             println!("{:?}", core);
             panic!("Missing sample");
         }
+        let s_hash: Vec<i64> = core.into_iter().map(|c| hash(c)).collect();
 
         let get = encoded
             .map(|s| {
                 let mut idx = 0;
                 let mut ans = 0;
-                for c in &core {
-                    if hash(s) == hash(*c) {
+                for c in &s_hash {
+                    if hash(s) == *c {
                         ans = idx;
                     }
                     idx += 1;
