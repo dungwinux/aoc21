@@ -58,7 +58,7 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
                 // println!("{:?} {} {}", e, feat_cf, feat_bd);
                 if has_feat(e, feat_cf) && has_feat(e, feat_bd) {
                     core[9] = e;
-                } else if has_feat(e, &*feat_bd) {
+                } else if has_feat(e, feat_bd) {
                     core[6] = e;
                 } else {
                     core[0] = e;
@@ -73,6 +73,11 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
             println!("{:?}", core);
             panic!("Missing sample");
         }
+
+        // TODO: (Note to future-self)
+        // The above detection algorithm can be rewritten as hashing and
+        // checking bits.
+        // For time sake, during the moment, it perform string comparison
         let s_hash: Vec<i64> = core.into_iter().map(|c| hash(c)).collect();
 
         let get = encoded
