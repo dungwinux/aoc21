@@ -46,9 +46,9 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
         let min = &mut min_map[cur.0 .0][cur.0 .1];
         if cur.1 < *min {
             *min = cur.1;
-            if *min >= min_map[dest.0][dest.1]
-            - (i64::abs(dest.0 as i64 - cur.0 .0 as i64)
-                + i64::abs(dest.1 as i64 - cur.0 .1 as i64))
+            if *min
+                >= min_map[dest.0][dest.1]
+                    - (dest.0 as i64 - cur.0 .0 as i64 + dest.1 as i64 - cur.0 .1 as i64)
             {
                 continue;
             }
