@@ -36,6 +36,7 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
         }
         proc_stack = next;
     }
+    // Character collector (each character is duplicated once)
     let mut cat = HashMap::new();
     for e in proc_stack {
         cat.entry(e.0 .0).and_modify(|x| *x += e.1).or_insert(e.1);

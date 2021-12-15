@@ -24,6 +24,7 @@ pub fn solve(inp: Vec<&str>) -> Result<i64, Box<dyn std::error::Error>> {
         }
         riskmap.push(row);
     }
+    // Re-implement with BinaryHeap (PQ) for performance?
     let mut state_store = std::collections::VecDeque::from(vec![((0, 0), 0)]);
     let lim = (riskmap.len(), riskmap[0].len());
     let real_lim = (riskmap.len() * 5, riskmap[0].len() * 5);
