@@ -1,6 +1,6 @@
 use std::fs;
-mod day15;
-use day15::{p1, p2};
+mod day16;
+use day16::{p1, p2};
 
 fn run(contents: Vec<&str>, solver: &dyn Fn(Vec<&str>) -> Result<i64, Box<dyn std::error::Error>>) {
     match solver(contents) {
@@ -10,7 +10,7 @@ fn run(contents: Vec<&str>, solver: &dyn Fn(Vec<&str>) -> Result<i64, Box<dyn st
 }
 
 fn main() {
-    let base = String::from("src/day15/");
+    let base = String::from("src/day16/");
     let data =
         fs::read_to_string(base + "input.txt").expect("Something went wrong reading the file");
 
